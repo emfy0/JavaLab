@@ -1,10 +1,6 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-
-import java.beans.Transient;
-import java.lang.annotation.Target;
-
 import org.junit.Test;
 
 import lib.Complex;
@@ -24,6 +20,15 @@ public class TestComplex {
     assertEquals(4, result.real(), 0);
     assertEquals(6, result.imaginary(), 0);
   }
+  
+  @Test
+  public void testSumWith() {
+    Complex complex = new Complex(3, 4);
+    complex.sum_with(1, 2);
+
+    assertEquals(4, complex.real(), 0);
+    assertEquals(6, complex.imaginary(), 0);
+  }
 
   @Test
   public void testSub() {
@@ -35,21 +40,12 @@ public class TestComplex {
   }
 
   @Test
-  public void testSumWith() {
-    Complex complex = new Complex(3, 4);
-    complex.sum_with(1, 2);
-
-    assertEquals(4, complex.real(), 0);
-    assertEquals(6, complex.imaginary(), 0);
-  }
-
-  @Test
   public void testSubWith() {
     Complex complex = new Complex(3, 4);
-    Complex result = complex.sub_with(1, 2);
+    complex.sub_with(1, 2);
 
-    assertEquals(2, result.real(), 0);
-    assertEquals(2, result.imaginary(), 0);
+    assertEquals(2, complex.real(), 0);
+    assertEquals(2, complex.imaginary(), 0);
   }
 
   @Test
