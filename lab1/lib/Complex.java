@@ -4,10 +4,13 @@ public class Complex {
   private double real_part;
   private double imaginary_part;
 
+  public Complex () {}
+
   public Complex (double real_part, double imaginary_part) {
     this.real_part = real_part;
     this.imaginary_part = imaginary_part;
   }
+
 
   public double real() {
     return real_part;
