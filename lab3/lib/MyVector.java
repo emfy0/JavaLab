@@ -58,10 +58,11 @@ public class MyVector<T> {
   }
 
   public Object pop() throws Exception {
-    length--;
-    if (length < 0) {
+    if (length < 1) {
       throw new Exception("Vector is empty!");
     }
+
+    length--;
 
     Object deteledObject = objectArray[length];
     objectArray[length] = null;
