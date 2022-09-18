@@ -2,19 +2,20 @@ package lib;
 
 import java.util.Arrays;
 
-public class MyVector {
-  private Object[] objectArray;
+@SuppressWarnings("unchecked")
+public class MyVector<T> {
+  private T[] objectArray;
   private int length;
   private int capacity;
 
-  public MyVector(Object[] array) {
+  public MyVector(T[] array) {
     length = array.length;
     capacity = 2 * length + 10;
     objectArray = Arrays.copyOf(array, length * 2 + 10);
   }
 
   public MyVector() {
-    objectArray = new Object[10];
+    objectArray = (T[])new Object[10];
     length = 0;
     capacity = 10;
   }
@@ -22,10 +23,10 @@ public class MyVector {
   public MyVector(int size) {
     length = size;
     capacity = size * 2 + 10;
-    objectArray = new Object[capacity];
+    objectArray = (T[])new Object[capacity];
   }
 
-  public MyVector(MyVector copyFrom) {
+  public MyVector(MyVector<T> copyFrom) {
     objectArray = Arrays.copyOf(copyFrom.objectArray, copyFrom.objectArray.length);
     length = copyFrom.length;
     capacity = copyFrom.capacity;
@@ -47,7 +48,7 @@ public class MyVector {
     return objectArray[index];
   }
 
-  public Object push(Object newObj) {
+  public Object push(T newObj) {
     length++;
     resolveArrayCapacity();
 
@@ -68,7 +69,7 @@ public class MyVector {
     return deteledObject;
   }
 
-  public Object replaceAt(int index, Object obj) throws Exception {
+  public Object replaceAt(int index, T obj) throws Exception {
     if (index >= length) {
       throw new Exception("Out of range index!");
     }
@@ -95,7 +96,7 @@ public class MyVector {
     return objectAtIndex;
   }
 
-  public Object insertAt(int index, Object obj) throws Exception {
+  public Object insertAt(int index, T obj) throws Exception {
     if (index >= length) {
       throw new Exception("Out of range index!");
     }
@@ -112,7 +113,7 @@ public class MyVector {
     return obj;
   }
 
-  public MyVector reduceTo(int size) throws Exception {
+  public MyVector<T> reduceTo(int size) throws Exception {
     if (size > length) {
       throw new Exception("Out of range size!");
     }
@@ -126,7 +127,7 @@ public class MyVector {
     return this;
   }
 
-  public MyVector removeAllElements() {
+  public MyVector<T> removeAllElements() {
     objectArray = null;
     length = 0;
     capacity = 0;
@@ -138,7 +139,7 @@ public class MyVector {
     if (length > capacity) {
       int newCapacity = length * 2 + 10;
 
-      Object[] tempArray = new Object[newCapacity];
+      T[] tempArray = (T[])new Object[newCapacity];
       System.arraycopy(objectArray, 0, tempArray, 0, capacity);
 
       capacity = newCapacity;

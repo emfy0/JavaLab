@@ -2,7 +2,7 @@ import lib.MyVector;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    MyVector vector = new MyVector(new Object[] {"Helo", "world"});
+    MyVector<String> vector = new MyVector<String> (new String[] {"Helo", "world"});
     vector.push("!");
 
     System.out.println(
