@@ -1,6 +1,9 @@
 package tests;
 
 import static org.junit.Assert.*;
+
+import java.beans.Transient;
+
 import org.junit.Test;
 
 import lib.BinaryTree;
@@ -61,5 +64,19 @@ public class TestВinaryTree {
 
     bintree.clear();
     assertEquals(0, bintree.getLen());
+  }
+
+  @Test
+  public void sumOfLeftSubtreeElements () throws Exception {
+    BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
+
+    //   11
+    //  9 10
+    // 8 
+    bintree.insert(11, 1);
+    bintree.insert(10, 2);
+    bintree.insert(9, 3);
+    bintree.insert(8, 4);
+    assertEquals(7, bintree.sumOfLeftSubtreeElements(11));
   }
 }
