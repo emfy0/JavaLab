@@ -67,16 +67,24 @@ public class TestВinaryTree {
   }
 
   @Test
-  public void sumOfLeftSubtreeElements () throws Exception {
+  public void testGetNodeType () throws Exception {
     BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
 
-    //   11
-    //  9 10
-    // 8 
+    //      11
+    //   15   13
+    // 14    12 9
+    //
     bintree.insert(11, 1);
-    bintree.insert(10, 2);
-    bintree.insert(9, 3);
-    bintree.insert(8, 4);
-    assertEquals(7, bintree.sumOfLeftSubtreeElements(11));
+    bintree.insert(15, 2);
+    bintree.insert(13, 3);
+    bintree.insert(9, 4);
+    bintree.insert(12, 5);
+
+    bintree.insert(14, 6);
+    assertEquals("node is full", bintree.getNodeType(11));
+    assertEquals("node is a leaf", bintree.getNodeType(9));
+    assertEquals("node is not full", bintree.getNodeType(15));
+    assertEquals("node is full", bintree.getNodeType(13));
+    assertEquals("node is a leaf", bintree.getNodeType(14));
   }
 }

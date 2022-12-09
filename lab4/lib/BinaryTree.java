@@ -96,37 +96,20 @@ public class BinaryTree<TKeyType extends Comparable<TKeyType>, TDataType> {
     return null;
   }
 
-  private int sumOfSubtreeElements (BinaryTreeNode<TKeyType, TDataType> node) {
-    if (node == null) {
-      return 0;
-    }
-
-    int sum = 0;
-
-    if (node.left != null) {
-      sum += (int) node.left.data;
-    }
-
-    if (node.right != null) {
-      sum += (int) node.right.data;
-    }
-
-    sum += sumOfSubtreeElements(node.left);
-    sum += sumOfSubtreeElements(node.right);
-
-    return sum;
-  }
-
-  public int sumOfLeftSubtreeElements(TKeyType k) {
+  public String getNodeType(TKeyType k) {
     BinaryTreeNode<TKeyType, TDataType> node = getNode(k);
 
     if (node == null) {
-      return 0;
+      return "node could not be found";
     }
 
-    int sum = sumOfSubtreeElements(node.left);
-
-    return sum;
+    if (node.left == null && node.right == null) {
+      return "node is a leaf";
+    } else if (node.left == null || node.right == null) {
+      return "node is not full";
+    } else {
+      return "node is full";
+    }
   }
 
   public void insert(TKeyType key, TDataType data) {
