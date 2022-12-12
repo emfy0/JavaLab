@@ -124,7 +124,7 @@ public class BinaryTree<TKeyType extends Comparable<TKeyType>, TDataType> {
       return 0;
     }
 
-    int sum = sumOfSubtreeElements(node.left);
+    int sum = sumOfSubtreeElements(node.left) + (int) node.left.data;
 
     return sum;
   }

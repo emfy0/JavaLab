@@ -70,13 +70,27 @@ public class TestВinaryTree {
   public void sumOfLeftSubtreeElements () throws Exception {
     BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
 
-    //   11
-    //  9 10
-    // 8 
-    bintree.insert(11, 1);
-    bintree.insert(10, 2);
-    bintree.insert(9, 3);
-    bintree.insert(8, 4);
-    assertEquals(7, bintree.sumOfLeftSubtreeElements(11));
+
+    //      11
+    //   15   13
+    // 14    12 9
+
+
+    //       10
+    //     8   20
+    //       14  25
+    //     13  17
+
+    bintree.insert(10, 10);
+    bintree.insert(8, 8);
+    bintree.insert(20, 20);
+    bintree.insert(14, 14);
+    bintree.insert(13, 13);
+    bintree.insert(17, 17);
+    bintree.insert(25, 25);
+
+    assertEquals(8, bintree.sumOfLeftSubtreeElements(10));
+    assertEquals(14 + 13 + 17, bintree.sumOfLeftSubtreeElements(20));
   }
 }
+// 10 8 20 14 13 17 25
