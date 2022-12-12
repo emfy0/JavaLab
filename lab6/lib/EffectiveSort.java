@@ -3,6 +3,58 @@ package lib;
 import java.util.Arrays;
 
 public class EffectiveSort {
+  private static Integer[] reverse(Integer[] array) {
+    Integer[] newArray = new Integer[array.length];
+
+    int null_counter = 0;
+    while (array.length > 0) {
+      if (array[array.length - 1 - null_counter] != null) {
+        break;
+      }
+      null_counter++;
+    }
+
+    for (int i = 0; i < array.length - null_counter; i++) {
+      newArray[array.length - 1 - i - null_counter] = array[i];
+    }
+
+    return newArray;
+  }
+
+  public static void sortOddAsc(Integer[] arr) {
+    Integer [] ingoingArray = Arrays.copyOf(arr, arr.length);
+
+    Integer[] odd = new Integer[arr.length];
+    Integer[] even = new Integer[arr.length];
+    int oddCount = 0;
+    int evenCount = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 == 0) {
+        even[evenCount] = arr[i];
+        evenCount++;
+      } else {
+        odd[oddCount] = arr[i];
+        oddCount++;
+      }
+    }
+    quickSort(odd, 0, oddCount - 1);
+    quickSort(even, 0, evenCount - 1);
+
+    even = reverse(even);
+
+    int oddIndex = 0;
+    int evenIndex = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (ingoingArray[i] % 2 == 0) {
+        arr[i] = even[evenIndex];
+        evenIndex++;
+      } else {
+        arr[i] = odd[oddIndex];
+        oddIndex++;
+      }
+    }
+  }
+
   public static <T extends Comparable<T>> void quickSort(T arr[]) {
     quickSort(arr, 0, arr.length - 1);
   }

@@ -69,4 +69,15 @@ public class TestEffectiveSort {
     EffectiveSort.mergeSort(e);
     assertArrayEquals(e, f);
   }
+
+  @Test
+  public void testSortOddAsc() {
+    Integer a[] = { 8, 7, 1, 3, 2, 4, 5, 6, 9, 0 };
+    
+    EffectiveSort.sortOddAsc(a);
+
+    Integer b[] = { 8, 1, 3, 5, 6, 4, 7, 2, 9, 0 };
+
+    assertArrayEquals(a, b);
+  }
 }
